@@ -9,11 +9,15 @@ use Illuminate\Support\ServiceProvider;
 
 class TodoListServiceProvider extends ServiceProvider implements DeferrableProvider
 {
+    // Deklarasi properti $singletons untuk binding service ke implementasi
     public array $singletons = [
+        // Bind interface TodolistService ke implementasi TodolistServiceImplementation
         TodolistService::class => TodolistServiceImplementation::class,
     ];
 
-    public function provides(): Array {
+    // Method provides untuk mendeklarasikan service yang disediakan oleh provider
+    public function provides(): array {
+        // Mengembalikan daftar service yang disediakan (dalam hal ini TodolistService)
         return [TodolistService::class];
     }
     

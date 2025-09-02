@@ -11,9 +11,11 @@
 </head>
 <body>
 <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    {{-- Mengecek apakah variabel $error tersedia --}}
     @if (isset($error))
         <div class="row">
             <div class="alert alert-danger" role="alert">
+                {{-- Menampilkan isi pesan error --}}
                 {{ $error }}
             </div>
         </div>
