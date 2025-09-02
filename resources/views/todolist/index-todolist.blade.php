@@ -12,9 +12,11 @@
 <body>
 <div class="container col-xl-10 col-xxl-8 px-4 py-5">
 
+    {{-- Mengecek apakah variabel $error tersedia --}}
     @if (isset($error))
         <div class="row">
             <div class="alert alert-danger" role="alert">
+                {{-- Menampilkan pesan error yang ada di variabel $error --}}
                 {{ $error }}
             </div>
         </div>
@@ -58,11 +60,15 @@
                 </tr>
                 </thead>
                 <tbody>
+                {{-- Melakukan perulangan untuk setiap item dalam variabel $todolist --}}
                 @foreach ($todolist as $todo)
                     <tr>
+                        {{-- Menampilkan ID todo pada kolom pertama dengan format heading --}}
                         <th scope="row">{{ $todo['id'] }}</th>
+                        {{-- Menampilkan isi dari todo pada kolom kedua --}}
                         <td>{{ $todo['todo'] }}</td>
                         <td>
+                            {{-- Formulir untuk menghapus todo tertentu berdasarkan ID --}}
                             <form action="/todolist/{{ $todo["id"] }}/delete" method="post">
                                 @csrf
                                 <button class="w-100 btn btn-lg btn-danger" type="submit">Remove</button>

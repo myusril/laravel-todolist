@@ -16,9 +16,12 @@ class OnlyMemberMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if($request->session()->exists("user")) {
+        // Cek apakah session memiliki key "user" (artinya user sudah login)
+        if ($request->session()->exists("user")) {
+            // Jika user sudah login, lanjutkan request ke proses berikutnya
             return $next($request);
         } else {
+            // Jika user belum login, redirect ke halaman home (/)
             return redirect("/");
         }
     }
