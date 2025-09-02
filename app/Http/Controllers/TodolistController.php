@@ -41,6 +41,8 @@ class TodolistController extends Controller
     }
 
     public function deleteTodo(Request $request, string $todoId) {
+        $this->todolistService->deleteTodo($todoId);
 
+        return redirect()->action([TodolistController::class,"indexTodo"]);
     }
 }
